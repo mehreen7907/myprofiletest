@@ -1,1 +1,411 @@
-<h1>hello world from github pgs</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mehreen — Profile Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0f2140;
+    --ink-2:#16294a;
+    --grid:#2c4568;
+    --paper:#f3efe2;
+    --paper-dim:#e7e1cf;
+    --line:#8fb2cf;
+    --gold:#d6a13c;
+    --gold-dim:#a9812f;
+    --clay:#b5583f;
+    --text-onink:#dfe6ef;
+    --text-onink-dim:#93a6bf;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--ink);
+    color:var(--text-onink);
+    font-family:'Inter', system-ui, sans-serif;
+    line-height:1.55;
+    background-image:
+      repeating-linear-gradient(0deg, var(--grid) 0px, var(--grid) 1px, transparent 1px, transparent 32px),
+      repeating-linear-gradient(90deg, var(--grid) 0px, var(--grid) 1px, transparent 1px, transparent 32px);
+    background-size:32px 32px;
+    opacity:0;
+    animation: fadein 0.9s ease forwards;
+  }
+  @keyframes fadein{ to{opacity:1;} }
+  @media (prefers-reduced-motion: reduce){
+    body{ animation:none; opacity:1; }
+  }
+
+  .sheet{
+    max-width:920px;
+    margin:0 auto;
+    padding:28px 20px 60px;
+  }
+
+  /* ---------- title block ---------- */
+  .titleblock{
+    border:1.5px solid var(--line);
+    background:rgba(15,33,64,0.55);
+    backdrop-filter:blur(1px);
+  }
+  .titleblock-top{
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    border-bottom:1px solid var(--line);
+  }
+  .tb-name{
+    padding:22px 22px 18px;
+    border-right:1px solid var(--line);
+  }
+  .tb-name .kicker{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:.14em;
+    color:var(--text-onink-dim);
+    margin-bottom:10px;
+  }
+  .tb-name h1{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:clamp(34px,6vw,52px);
+    margin:0;
+    color:var(--paper);
+    line-height:1.02;
+  }
+  .tb-name p{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:16px;
+    color:var(--line);
+    margin:10px 0 0;
+    max-width:34ch;
+  }
+  .tb-meta{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+  .tb-cell{
+    padding:14px 18px;
+    border-left:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .tb-cell:nth-child(odd){ border-left:none; }
+  .tb-cell .label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:10px;
+    letter-spacing:.1em;
+    color:var(--text-onink-dim);
+    display:block;
+    margin-bottom:5px;
+  }
+  .tb-cell .value{
+    font-size:14px;
+    color:var(--paper);
+  }
+  .titleblock-strip{
+    display:flex;
+    justify-content:space-between;
+    padding:9px 22px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    color:var(--text-onink-dim);
+    letter-spacing:.05em;
+  }
+
+  /* ---------- sections ---------- */
+  section{
+    margin-top:54px;
+    position:relative;
+  }
+  .sec-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:20px;
+  }
+  .sec-head .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    color:var(--gold);
+    letter-spacing:.08em;
+    white-space:nowrap;
+  }
+  .sec-head h2{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:24px;
+    color:var(--paper);
+    margin:0;
+  }
+  .sec-head::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--grid);
+    transform:translateY(2px);
+  }
+
+  .about p{
+    max-width:62ch;
+    font-size:16px;
+    color:var(--text-onink);
+  }
+  .about p + p{ margin-top:14px; }
+
+  /* builds */
+  .builds{
+    display:grid;
+    gap:14px;
+  }
+  .build{
+    border:1px solid var(--grid);
+    border-left:3px solid var(--line);
+    padding:16px 18px;
+    background:rgba(255,255,255,0.02);
+  }
+  .build h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:17px;
+    margin:0 0 6px;
+    color:var(--paper);
+  }
+  .build p{
+    margin:0 0 10px;
+    font-size:14.5px;
+    color:var(--text-onink);
+    max-width:64ch;
+  }
+  .toolrow{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .tool{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    color:var(--line);
+    border:1px solid var(--grid);
+    padding:3px 8px;
+  }
+
+  /* coursework chips */
+  .chipfield{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .chip{
+    font-size:13.5px;
+    color:var(--paper);
+    border:1px solid var(--grid);
+    padding:7px 14px;
+    position:relative;
+  }
+  .chip::before{
+    content:"+";
+    color:var(--line);
+    margin-right:7px;
+    font-family:'JetBrains Mono', monospace;
+  }
+
+  /* craft panel — distinct warm texture */
+  .craft{
+    background:var(--paper);
+    color:var(--ink);
+    margin-left:-20px;
+    margin-right:-20px;
+    padding:34px 20px 38px;
+    border-top:2px dashed var(--gold-dim);
+    border-bottom:2px dashed var(--gold-dim);
+    background-image:
+      radial-gradient(var(--paper-dim) 1px, transparent 1px);
+    background-size:14px 14px;
+  }
+  .craft .inner{ max-width:880px; margin:0 auto; }
+  .craft .sec-head h2{ color:var(--ink); }
+  .craft .sec-head .tag{ color:var(--clay); }
+  .craft .sec-head::after{ background:var(--paper-dim); }
+  .craft-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px 22px;
+  }
+  .craft-item{
+    padding:14px 0;
+    border-bottom:1px solid var(--paper-dim);
+  }
+  .craft-item h3{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:16px;
+    margin:0 0 5px;
+    color:var(--clay);
+  }
+  .craft-item p{
+    margin:0;
+    font-size:14px;
+    color:#3a3226;
+    max-width:44ch;
+  }
+
+  footer{
+    margin-top:54px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    color:var(--text-onink-dim);
+    letter-spacing:.05em;
+    border-top:1px solid var(--grid);
+    padding-top:14px;
+  }
+
+  @media (max-width:640px){
+    .titleblock-top{ grid-template-columns:1fr; }
+    .tb-name{ border-right:none; border-bottom:1px solid var(--line); }
+    .tb-meta{ grid-template-columns:1fr; }
+    .tb-cell{ border-left:none; }
+    .craft-grid{ grid-template-columns:1fr; }
+    footer{ flex-direction:column; align-items:flex-start; gap:6px; }
+  }
+
+  ::selection{ background:var(--gold); color:var(--ink); }
+  a{ color:var(--gold); }
+  :focus-visible{ outline:2px solid var(--gold); outline-offset:2px; }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="titleblock">
+    <div class="titleblock-top">
+      <div class="tb-name">
+        <div class="kicker">PROFILE SHEET · SCALE 1:1</div>
+        <h1>Mehreen</h1>
+        <p>IT engineering student who prefers building the tool over doing the task by hand.</p>
+      </div>
+      <div class="tb-meta">
+        <div class="tb-cell">
+          <span class="label">INSTITUTION</span>
+          <span class="value">Thakur College of Engineering &amp; Technology</span>
+        </div>
+        <div class="tb-cell">
+          <span class="label">PROGRAMME</span>
+          <span class="value">Information Technology</span>
+        </div>
+        <div class="tb-cell">
+          <span class="label">GROUP</span>
+          <span class="value">IT-C, Group 4</span>
+        </div>
+        <div class="tb-cell">
+          <span class="label">FACULTY</span>
+          <span class="value">Prof. Shakeel Ansari</span>
+        </div>
+      </div>
+    </div>
+    <div class="titleblock-strip">
+      <span>SHEET 01/01</span>
+      <span>REV — 2026</span>
+    </div>
+  </div>
+
+  <section class="about">
+    <div class="sec-head">
+      <span class="tag">01</span>
+      <h2>About</h2>
+    </div>
+    <p>Somewhere between coursework and hobby, most of what I make is the same instinct applied twice: if a task is repetitive or fiddly, write something that does it for me. That's shown up in answer-bank PDFs for exam prep, a recipe app with an SVG thali on the screen, and title blocks edited in bulk instead of by hand.</p>
+    <p>The other half of that instinct goes into gifts — scrapbooks, memory books, a printed magazine — where the same care for detail is aimed at people instead of problems.</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="tag">02</span>
+      <h2>What I build</h2>
+    </div>
+    <div class="builds">
+      <div class="build">
+        <h3>Aaj Khane Mein Kya Banau?</h3>
+        <p>A single-file HTML recipe recommender with a thali drawn in SVG and ingredient-matching logic across a 20-dish database, now being extended to cover more cuisines.</p>
+        <div class="toolrow">
+          <span class="tool">HTML/SVG</span><span class="tool">single-file app</span>
+        </div>
+      </div>
+      <div class="build">
+        <h3>Exam answer banks</h3>
+        <p>Generated PDFs covering Discrete Mathematics, Data Structures, DBMS, and Mathematics II/III — full ten-mark solutions organised by course outcome, built to actually study from.</p>
+        <div class="toolrow">
+          <span class="tool">Python</span><span class="tool">ReportLab</span>
+        </div>
+      </div>
+      <div class="build">
+        <h3>Engineering graphics guides</h3>
+        <p>Orthographic and isometric drawing guides for all thirty practical exam sets, plus bulk edits to title-block fields across drawing sheets.</p>
+        <div class="toolrow">
+          <span class="tool">AutoCAD</span><span class="tool">PIL</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="tag">03</span>
+      <h2>Coursework</h2>
+    </div>
+    <div class="chipfield">
+      <span class="chip">Mathematics</span>
+      <span class="chip">Physics</span>
+      <span class="chip">Engineering Graphics</span>
+      <span class="chip">Data Structures</span>
+      <span class="chip">Discrete Mathematics</span>
+      <span class="chip">DBMS</span>
+      <span class="chip">Programming</span>
+    </div>
+  </section>
+
+</div>
+
+<div class="craft">
+  <div class="inner">
+    <div class="sec-head">
+      <span class="tag">04 — off the sheet</span>
+      <h2>Craft &amp; gifting</h2>
+    </div>
+    <div class="craft-grid">
+      <div class="craft-item">
+        <h3>Birthday scrapbook</h3>
+        <p>A memory book built twice over — once as a finished PNG, once as an editable PowerPoint template with torn-paper cards and filmstrip layouts.</p>
+      </div>
+      <div class="craft-item">
+        <h3>"Chaos &amp; Co." magazine</h3>
+        <p>An eight-page birthday magazine planned for a friend since grade six, laid out to print on A3 photo paper.</p>
+      </div>
+      <div class="craft-item">
+        <h3>Father's Day video</h3>
+        <p>A short film stitched together with Python and FFmpeg — synthesised narration, Ken Burns pans over old photos, and a freeze-frame ending.</p>
+      </div>
+      <div class="craft-item">
+        <h3>The constant</h3>
+        <p>A close-knit friend group, and one friendship going back to grade six that most of this is made for.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sheet">
+  <footer>
+    <span>MEHREEN — PROFILE</span>
+    <span>DRAWN BY HAND, ASSEMBLED BY SCRIPT</span>
+  </footer>
+</div>
+
+</body>
+</html>
